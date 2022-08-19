@@ -1,0 +1,37 @@
+{
+	"name": "solid-ssr",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "",
+	"author": "Alexandre Mouton-Brady",
+	"license": "ISC",
+	"keywords": [
+		"solid",
+		"solid-js",
+		"ssr"
+	],
+	"main": "index.js",
+	"scripts": {
+		"vite": "vite",
+		"dev": "node server",
+		"build": "npm run build:client && npm run build:server",
+		"build:client": "vite build --outDir dist/client",
+		"build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
+		"generate": "vite build --outDir dist/static && npm run build:server && node prerender",
+		"serve": "cross-env NODE_ENV=production node server",
+		"debug": "node --inspect-brk server"
+	},
+	"dependencies": {
+		"compression": "^1.7.4",
+		"express": "^4.18.1",
+		"serve-static": "^1.15.0",
+		"solid-js": "^1.4.8",
+		"solid-meta": "^0.28.1"
+	},
+	"devDependencies": {
+		"@solidjs/router": "^0.4.2",
+		"cross-env": "^7.0.3",
+		"vite": "^3.0.8",
+		"vite-plugin-solid": "^2.3.0"
+	}
+}
