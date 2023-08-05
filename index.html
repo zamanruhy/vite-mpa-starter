@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="h-full" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Site title</title>
+    <meta name="description" content="Site description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#bbbbbb" />
+    <script>
+      (() => {
+        const themeColorEl = document.head.querySelector('meta[name="theme-color"]');
+        const colorSchemeEl = document.head.querySelector('meta[name="color-scheme"]');
+        const forcedTheme = window.localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = forcedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        colorSchemeEl && (colorSchemeEl.content = theme);
+        themeColorEl && (themeColorEl.content = theme === "dark" ? "#333333" : "#bbbbbb");
+      })();
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Site title" />
+    <meta property="og:description" content="Site description" />
+    <meta property="og:image" content="http://via.placeholder.com/1200x630.jpg" />
+    <meta property="og:url" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="https://polyfill.io/v3/polyfill.min.js" defer></script>
+    <script type="module" crossorigin src="static/js/app.js"></script>
+    <link rel="modulepreload" crossorigin href="static/js/vendor.js" />
+    <link rel="stylesheet" href="static/css/app.css" />
+  </head>
+  <body>
+    <div id="app" class="contents">
+      <div class="flex min-h-full flex-col">
+        <header class="header mb-3 md:mb-5">
+          <div class="container">
+            <div class="flex items-center justify-between py-4">
+              <img
+                class="w-14"
+                src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 166 155.3'%3e%3cpath d='M163 35S110-4 69 5l-3 1c-6 2-11 5-14 9l-2 3-15 26 26 5c11 7 25 10 38 7l46 9 18-30z' fill='%2376b3e1'/%3e%3clinearGradient id='a' gradientUnits='userSpaceOnUse' x1='27.5' y1='3' x2='152' y2='63.5'%3e%3cstop offset='.1' stop-color='%2376b3e1'/%3e%3cstop offset='.3' stop-color='%23dcf2fd'/%3e%3cstop offset='1' stop-color='%2376b3e1'/%3e%3c/linearGradient%3e%3cpath d='M163 35S110-4 69 5l-3 1c-6 2-11 5-14 9l-2 3-15 26 26 5c11 7 25 10 38 7l46 9 18-30z' opacity='.3' fill='url(%23a)'/%3e%3cpath d='m52 35-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z' fill='%23518ac8'/%3e%3clinearGradient id='b' gradientUnits='userSpaceOnUse' x1='95.8' y1='32.6' x2='74' y2='105.2'%3e%3cstop offset='0' stop-color='%2376b3e1'/%3e%3cstop offset='.5' stop-color='%234377bb'/%3e%3cstop offset='1' stop-color='%231f3b77'/%3e%3c/linearGradient%3e%3cpath d='m52 35-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z' opacity='.3' fill='url(%23b)'/%3e%3clinearGradient id='c' gradientUnits='userSpaceOnUse' x1='18.4' y1='64.2' x2='144.3' y2='149.8'%3e%3cstop offset='0' stop-color='%23315aa9'/%3e%3cstop offset='.5' stop-color='%23518ac8'/%3e%3cstop offset='1' stop-color='%23315aa9'/%3e%3c/linearGradient%3e%3cpath d='M134 80a45 45 0 0 0-48-15L24 85 4 120l112 19 20-36c4-7 3-15-2-23z' fill='url(%23c)'/%3e%3clinearGradient id='d' gradientUnits='userSpaceOnUse' x1='75.2' y1='74.5' x2='24.4' y2='260.8'%3e%3cstop offset='0' stop-color='%234377bb'/%3e%3cstop offset='.5' stop-color='%231a336b'/%3e%3cstop offset='1' stop-color='%231a336b'/%3e%3c/linearGradient%3e%3cpath d='M114 115a45 45 0 0 0-48-15L4 120s53 40 94 30l3-1c17-5 23-21 13-34z' fill='url(%23d)'/%3e%3c/svg%3e"
+                alt="Logo"
+                width="166"
+                height="155.3"
+              />
+              <ul class="ml-auto flex items-center gap-8">
+                <li>
+                  <a
+                    end
+                    href="."
+                    class="transform border-b-2 py-1 transition"
+                    activeclass="border-blue-500 text-gray-800"
+                    inactiveclass="border-transparent text-gray-600 hover:border-blue-500 hover:text-gray-800"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/about"
+                    class="transform border-b-2 py-1 transition"
+                    activeclass="border-blue-500 text-gray-800"
+                    inactiveclass="border-transparent text-gray-600 hover:border-blue-500 hover:text-gray-800"
+                    >About</a
+                  >
+                </li>
+              </ul>
+              <app-hamburger></app-hamburger>
+            </div>
+          </div>
+          <app-drawer class="hidden"
+            ><app-button variant="primary" data-modal="main-modal">Open Modal</app-button
+            ><app-input label="Name" placeholder="Type your name" name="name" autofocus></app-input
+            >Lorem <br />ipsum <br />dolor <br />sit <br />amet, <br />consectetur<br />adipisicing
+            <br />elit. <br />Aperiam, <br />eveniet!sss</app-drawer
+          >
+        </header>
+        <main class="grow">
+          <div class="container">
+            <h1 class="mb-3 text-xl">Icons</h1>
+            <div class="mt-4 flex items-center gap-4">
+              <svg viewBox="0 0 17 13" class="h-7 fill-current" aria-hidden="true">
+                <path
+                  d="M13.8 7.29v4.73c0 .17-.06.32-.19.44a.58.58 0 0 1-.45.19H9.33V8.86H6.77v3.79H2.94a.58.58 0 0 1-.45-.19.58.58 0 0 1-.19-.44V7.26l.01-.03 5.74-4.68 5.74 4.68.01.06zm2.23-.68-.62.73a.35.35 0 0 1-.21.1h-.03a.33.33 0 0 1-.21-.06L8.05 1.69 1.14 7.38a.36.36 0 0 1-.24.06.35.35 0 0 1-.21-.1l-.62-.73A.34.34 0 0 1 0 6.37a.3.3 0 0 1 .11-.21L7.29.26C7.5.09 7.76 0 8.05 0c.29 0 .55.09.76.26l2.44 2.01V.35c0-.1.03-.17.09-.23a.3.3 0 0 1 .23-.09h1.91c.1 0 .17.03.23.09a.3.3 0 0 1 .09.23v4.02l2.19 1.79c.07.05.1.13.11.21a.34.34 0 0 1-.07.24z"
+                ></path></svg
+              ><svg viewBox="0 0 371.23 371.23" class="h-7 fill-current" aria-hidden="true">
+                <path
+                  d="M371.23 21.21 350.02 0l-164.4 164.4L21.22 0 0 21.21l164.4 164.4L0 350.01l21.21 21.22 164.4-164.4 164.4 164.4 21.22-21.21-164.4-164.4z"
+                ></path>
+              </svg>
+            </div>
+            <div class="my-5">
+              [{"format":"webp","width":1000,"height":398.91975308641975,"src":"/static/img/cover.webp"},{"format":"jpg","width":1000,"height":398.91975308641975,"src":"/static/img/cover.jpg"},{"format":"webp","width":500,"height":199.45987654320987,"src":"/static/img/cover2.webp"},{"format":"jpg","width":500,"height":199.45987654320987,"src":"/static/img/cover2.jpg"},{"format":"webp","width":2000,"height":797.8395061728395,"src":"/static/img/cover3.webp"},{"format":"jpg","width":2000,"height":797.8395061728395,"src":"/static/img/cover3.jpg"}]<picture
+                ><source
+                  srcset="
+                    static/img/cover2.webp  500w,
+                    static/img/cover.webp  1000w,
+                    static/img/cover3.webp 2000w
+                  "
+                  type="image/webp" />
+                <img
+                  src="static/img/cover3.jpg"
+                  srcset="
+                    static/img/cover2.jpg  500w,
+                    static/img/cover.jpg  1000w,
+                    static/img/cover3.jpg 2000w
+                  "
+                  sizes="(min-width: 1280px) 320px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  width="2000"
+                  height="798"
+                  alt="#"
+                  loading="lazy"
+              /></picture>
+            </div>
+          </div>
+        </main>
+        <footer class="footer h-16 bg-gray-800"><div class="container"></div></footer>
+      </div>
+    </div>
+  </body>
+</html>
