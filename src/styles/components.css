@@ -1,0 +1,19 @@
+@tailwind components;
+
+@layer components {
+  .container {
+    @apply mx-auto box-content max-w-[1100px] px-4;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+
+    &__main {
+      flex-grow: 1;
+    }
+  }
+}

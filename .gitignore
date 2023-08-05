@@ -1,10 +1,12 @@
-# Dependecies
-node_modules/
+# dependencies
+node_modules
 
-# Build output
-dist/
+# production
+dist
 
-# Misc
-.pnpm-*.log
-.DS_Store
-.dccache
+# testing
+coverage
+
+# misc
+.idea
+.vscode
